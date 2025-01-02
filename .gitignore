@@ -6,7 +6,7 @@
 *.tfplan
 
 # Ignore local .terraform directories
-.terraform/
+.terraform*
 
 # Ignore IDE and editor settings
 .idea/
