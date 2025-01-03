@@ -22,13 +22,14 @@ resource "aws_instance" "public_instance" {
   key_name      = var.key_name
   associate_public_ip_address = true
   security_groups = [var.security_group_id]
-
+  user_data              = var.user_data  # Pass the user data here
   tags = {
-    Name        = "${var.env_name}-Public-Instance"
+    Name        = "${var.resource_prefix}-Public-Instance-${var.public_subnet_id}"
     Environment = var.env_name
   }
 }
 
+/*
 # EC2 Instance in the Private Subnet
 resource "aws_instance" "private_instance" {
   ami           = data.aws_ami.latest_ubuntu.id
@@ -43,13 +44,13 @@ resource "aws_instance" "private_instance" {
     Environment = var.env_name
   }
 }
+*/
 
-output "public_instance_id" {
-  description = "The ID of the public EC2 instance"
-  value       = aws_instance.public_instance.id
-}
 
+
+/*
 output "private_instance_id" {
   description = "The ID of the private EC2 instance"
   value       = aws_instance.private_instance.id
 }
+*/
