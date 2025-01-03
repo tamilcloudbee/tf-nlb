@@ -6,4 +6,6 @@ private_cidr_1 = "192.168.2.0/24"
 public_cidr_2 = "192.168.3.0/24"
 private_cidr_2 = "192.168.4.0/24"
 
-resource_prefix = "demo_nlb_"
+resource_prefix = "demo-nlb-"
+
+key_name = "test-linux"

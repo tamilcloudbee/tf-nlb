@@ -1,6 +1,6 @@
 resource "aws_security_group" "allow_ssh_icmp" {
-  name        = "allow-ssh-icmp"
-  description = "Allow SSH and ICMP traffic from anywhere"
+  name        = "allow-ssh-icmp-http"
+  description = "Allow SSH, ICMP, and HTTP traffic from anywhere"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -17,6 +17,13 @@ resource "aws_security_group" "allow_ssh_icmp" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -24,9 +31,11 @@ resource "aws_security_group" "allow_ssh_icmp" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    Name = "Allow SSH and ICMP"
+   tags = {
+    Environment = var.env_name
+    Name        = "${var.resource_prefix}_Allow SSH, ICMP, and HTTP"
   }
+
 }
 
 output "security_group_id" {

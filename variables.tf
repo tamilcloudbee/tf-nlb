@@ -29,4 +29,10 @@ variable "resource_prefix" {
   default     = "demo_nlb_"
 }
 
+variable "key_name" {
+  description = "Key for EC@ instance"
+  type        = string
+}
+
+
 
