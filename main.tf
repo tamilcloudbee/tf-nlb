@@ -51,7 +51,7 @@ module "ec2_a" {
   instance_type       = "t2.micro"
   public_subnet_id    = module.vpc_a.public_subnet_1_id
   # private_subnet_id   = module.vpc_a.private_subnet_id
-  user_data           = file("user_data.sh")  # Use file() directly here
+  user_data           = file("user-data-admin.sh")  # Use file() directly here
   key_name            = var.key_name
   env_name            = "dev_a"
   security_group_id   = module.sg_a.security_group_id
@@ -65,7 +65,7 @@ module "ec2_b" {
   instance_type       = "t2.micro"
   public_subnet_id    = module.vpc_a.public_subnet_2_id
   # private_subnet_id   = module.vpc_a.private_subnet_id
-  user_data           = file("user_data.sh")  # Use file() directly here  
+  user_data           = file("user-data-register.sh")  # Use file() directly here  
   key_name            = var.key_name
   env_name            = "dev_a"
   security_group_id   = module.sg_a.security_group_id
